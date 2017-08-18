@@ -120,9 +120,7 @@ var FixtureSchema = new Schema({
                 goalsAwayTeam: {
                     type: Number
                 }
-            },
-            odds: null
-
+            }
 
         }
     ]
