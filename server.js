@@ -2,11 +2,11 @@ var express = require('express'),
     app = express(),
     port = process.env.PORT || 3000,
     mongoose = require('mongoose'),
-    Team = require('./api/models/soccerModel'),
+    Fixture = require('./api/models/soccerModel'),
     bodyParser = require('body-parser');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/Soccerdb');
+mongoose.connect('mongodb://localhost/Fixturesdb');
 
 
 app.use(bodyParser.urlencoded({ extended: true }));

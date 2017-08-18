@@ -2,55 +2,53 @@
 
 
 var mongoose = require('mongoose'),
-    Team = mongoose.model('Team');
+    Fixture = mongoose.model('Fixture');
 
-exports.list_all_teams = function(req, res) {
-    Team.find({}, function(err, team) {
+exports.list_all_fixtures = function(req, res) {
+    Fixture.find({}, function(err, fixture) {
         if (err)
             res.send(err);
-        res.json(team);
+        res.json(fixture);
     });
 };
 
 
-
-
-exports.create_a_team = function(req, res) {
-    var new_team = new Team(req.body);
-    new_team.save(function(err, team) {
+exports.create_a_fixture = function(req, res) {
+    var new_fixture = new Fixture(req.body);
+    new_fixture.save(function(err, fixture) {
         if (err)
             res.send(err);
-        res.json(team);
+        res.json(fixture);
     });
 };
 
 
-exports.read_a_team = function(req, res) {
-    Team.findById(req.params.teamId, function(err, team) {
+exports.read_a_fixture = function(req, res) {
+    Fixture.findById(req.params.fixtureId, function(err, fixture) {
         if (err)
             res.send(err);
-        res.json(team);
+        res.json(fixture);
     });
 };
 
 
-exports.update_a_team = function(req, res) {
-    Team.findOneAndUpdate({_id: req.params.teamId}, req.body, {new: true}, function(err, team) {
+exports.update_a_fixture = function(req, res) {
+    Fixture.findOneAndUpdate({_id: req.params.fixtureId}, req.body, {new: true}, function(err, fixture) {
         if (err)
             res.send(err);
-        res.json(team);
+        res.json(fixture);
     });
 };
 
 
-exports.delete_a_team = function(req, res) {
+exports.delete_a_fixture = function(req, res) {
 
 
-    Team.remove({
-        _id: req.params.teamId
-    }, function(err, team) {
+    Fixture.remove({
+        _id: req.params.fixtureId
+    }, function(err, fixture) {
         if (err)
             res.send(err);
-        res.json({ message: 'Team successfully deleted' });
+        res.json({ message: 'Fixture successfully deleted' });
     });
 };

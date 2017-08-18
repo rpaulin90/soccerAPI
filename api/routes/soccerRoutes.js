@@ -1,16 +1,15 @@
 'use strict';
 module.exports = function(app) {
-    var teams = require('../controllers/soccerController');
+    var fixtures = require('../controllers/soccerController');
 
 
-    // todoList Routes
-    app.route('/teams')
-        .get(teams.list_all_teams)
-        .post(teams.create_a_team);
+    app.route('/fixtures')
+        .get(fixtures.list_all_fixtures)
+        .post(fixtures.create_a_fixture);
 
 
-    app.route('/teams/:teamId')
-        .get(teams.read_a_team)
-        .put(teams.update_a_team)
-        .delete(teams.delete_a_team);
+    app.route('/fixtures/:fixtureId')
+        .get(fixtures.read_a_fixture)
+        .put(fixtures.update_a_fixture)
+        .delete(fixtures.delete_a_fixture);
 };
