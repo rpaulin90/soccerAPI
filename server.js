@@ -6,7 +6,18 @@ var express = require('express'),
     bodyParser = require('body-parser');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/Fixturesdb');
+var db = process.env.MONGODB_URI || "mongodb://localhost/Fixturesdb";
+// Connect mongoose to our database
+mongoose.connect(db, function(error) {
+    // Log any errors connecting with mongoose
+    if (error) {
+        console.error(error);
+    }
+    // Or log a success message
+    else {
+        console.log("mongoose connection is successful");
+    }
+});
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
