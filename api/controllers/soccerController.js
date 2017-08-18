@@ -41,6 +41,15 @@ exports.update_a_fixture = function(req, res) {
 };
 
 
+exports.add_to_fixtures = function(req, res) {
+    Fixture.findOneAndUpdate({_id: req.params.fixtureId}, { $push: { "fixtures": req.body } }, {new: true}, function(err, fixture) {
+        if (err)
+            res.send(err);
+        res.send("updated array");
+    });
+};
+
+
 exports.delete_a_fixture = function(req, res) {
 
 

@@ -12,4 +12,7 @@ module.exports = function(app) {
         .get(fixtures.read_a_fixture)
         .put(fixtures.update_a_fixture)
         .delete(fixtures.delete_a_fixture);
+
+    app.route('/fixtures/add/:fixtureId')
+        .put(fixtures.add_to_fixtures)
 };
